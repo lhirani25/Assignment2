@@ -248,36 +248,66 @@ namespace Assignment2
         // Complete the missingNumbers function below.
         static int[] missingNumbers(int[] arr, int[] brr)
         {
-            //Dictionary<int, int> dict = new Dictionary<int, int>;
-            //for(int i = 0; i < arr.Length; i++)
-            //{
-            //    if(dict.ContainsKey(arr[i]))
-            //    {
-            //        dict[arr[i]] += 1;
-            //    }
-            //    else
-            //        dict[arr[i]] = 1;
-            //}
+            int alen = arr.Length;
+            int blen = brr.Length;
+            int[] store = new int[1000];
+            int[] check = new int[1000];
+            int i;
+            for (i = 0; i < alen; i++)
+            {
+                check[arr[i]]++;
+            }
+            for (i = 0; i <blen; i++)
+            {
+                check[brr[i]]--;
+            }
+            int j=0;
+            int count = 0;
+            for (i = 0; i < check.Length; i++)
+            {
+                if (check[i] != 0)
+                {
+                    count++;
+                    store[j++] = i;
+                }
+            }
+            int[] key = new int[count];
 
-            //for (int j = 0; j < brr.Length; j++)
-            //{
-            //    if (dict.ContainsKey(arr[i]))
-            //    {
-            //        dict[arr[j]] -= 1;
-            //    }
-            //    else
-            //        dict[arr[i]] = 1;
-            //}
-
-            return new int[] { };
-
+            for(i=0;i<count;i++)
+            {
+                if (store[i] >0)
+                    key[i] = store[i];
+            }
+            return key;
+        
         }
 
 
         // Complete the gradingStudents function below.
         static int[] gradingStudents(int[] grades)
         {
-            return new int[] { };
+            int n = grades.Length;
+            int[] result = new int[n];
+            for (int i = 0; i < n; i++)
+            {
+                if (grades[i] >= 38)
+                {
+                    if (grades[i] % 5 == 0)
+                        result[i] = grades[i];
+                    else if (grades[i] % 5 == 4)
+                        result[i] = grades[i] + 1;
+                    else if (grades[i] % 5 == 3)
+                        result[i] = grades[i] + 2;
+                    else
+                        result[i] = grades[i];
+                }
+                else
+                {
+                    result[i] = grades[i];
+                }
+            }
+
+            return result;
         }
 
         // Complete the findMedian function below.
