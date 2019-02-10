@@ -26,7 +26,7 @@ namespace Assignment2
 
             displayArray(r);
 
- 
+
 
             // Maximum toys
 
@@ -38,7 +38,7 @@ namespace Assignment2
 
             Console.WriteLine(maximumToys(prices, k));
 
- 
+
 
             // Balanced sums
 
@@ -48,7 +48,7 @@ namespace Assignment2
 
             Console.WriteLine(balancedSums(arr));
 
- 
+
 
             // Missing numbers
 
@@ -62,7 +62,7 @@ namespace Assignment2
 
             displayArray(r2);
 
- 
+
 
             // grading students
 
@@ -74,7 +74,7 @@ namespace Assignment2
 
             displayArray(r3);
 
- 
+
 
             // find the median
 
@@ -84,7 +84,7 @@ namespace Assignment2
 
             Console.WriteLine(findMedian(arr2));
 
- 
+
 
             // closest numbers
 
@@ -96,7 +96,7 @@ namespace Assignment2
 
             displayArray(r4);
 
- 
+
 
             // Day of programmer
 
@@ -106,17 +106,23 @@ namespace Assignment2
 
             Console.WriteLine(dayOfProgrammer(year));
 
- 
+
 
             Console.ReadKey();
 
         }
 
- 
+
 
         static void displayArray(int[] arr)
 
-        {
+        {                                                       /*Self Reflection: We learnt: 1.Handling and tackling issues with array boundaries, understanding collections
+
+                                                                                              2. Optimizing code as per time and space Complexity
+
+                                                                                              3. Importance of a team and helping each other to achieve better solutions
+
+                                                                                              4. Overall it was a very good practise to solve Hackerrank codes*/
 
             Console.WriteLine();
 
@@ -130,7 +136,7 @@ namespace Assignment2
 
         }
 
- 
+
 
         // Function to rotate the elements to the left by specified number of rotation
 
@@ -154,7 +160,7 @@ namespace Assignment2
 
                     return a;
 
-               }
+                }
 
                 if (d >= arrSize)
 
@@ -190,7 +196,7 @@ namespace Assignment2
 
         }
 
- 
+
 
         //Function to reverses the elements of the array within the specified boundary only
 
@@ -252,73 +258,9 @@ namespace Assignment2
 
         }
 
- 
 
-        static void Selection_Sort(int[] ss_arr)
 
-        {
 
-            // min_position is used to keep track of the element position with the current lowest value
-
-            int min_position;
-
-            // temp is used to conduct the swap during during the Selection Sort Algorithm
-
-            int temp;
-
-            int[] ret = new int[ss_arr.Length];
-
- 
-
-            for (int i = 0; i < ss_arr.Length; i++)
-
-            {
-
-                min_position = i;
-
-                // From the min_position, check to see if the next element is smaller
-
-                for (int x = i + 1; x < ss_arr.Length; x++)
-
-                {
-
-                    // If the next element from the current min_position is smaller, then make that the new min_position
-
-                    if (ss_arr[x] < ss_arr[min_position])
-
-                    {
-
-                        //min_position will keep track of the index that min is in, this is needed when a swap happens
-
-                        min_position = x;
-
-                    }
-
-                } // End of inner for loop
-
- 
-
-                // If the min_position does not equal the current element being evaluated in the loop
-
-                // Then execute the swap. by switching the postion of the lowest with the current element
-
-                if (min_position != i)
-
-                {
-
-                    temp = ss_arr[i];
-
-                    ss_arr[i] = ss_arr[min_position];
-
-                    ss_arr[min_position] = temp;
-
-                }
-
-            } // End of outer for loop
-
-        } // End of Selection_Sort
-
- 
 
         // Function to calculate the maximum number of toys that can be bought from a given amount
 
@@ -346,9 +288,9 @@ namespace Assignment2
 
                 //sort the array
 
-                Selection_Sort(prices);
+                sort(prices);
 
- 
+
 
                 //place holder for calculting the max number of toys
 
@@ -412,7 +354,7 @@ namespace Assignment2
 
         }
 
- 
+
 
         // Complete the balancedSums function below.
 
@@ -424,7 +366,7 @@ namespace Assignment2
 
             string result = "NO";
 
- 
+
 
             try
 
@@ -444,7 +386,7 @@ namespace Assignment2
 
                 }
 
- 
+
 
                 //Begin the loop until the end of array , break if the balanced sum exist
 
@@ -480,95 +422,111 @@ namespace Assignment2
 
             }//End of Catch
 
- 
+
 
             return result;
 
         }
 
- 
+
 
         // Complete the missingNumbers function below.
 
         static int[] missingNumbers(int[] arr, int[] brr)
 
         {
-
-            int alen = arr.Length;//store length of arr
-
-            int blen = brr.Length;//store length of brr
-
-            int[] store = new int[1000];//declare new array named store
-
-            int[] check = new int[1000];//declare new array named check
-            //null checks
-            if (alen < 0 && blen != 0)
-                
-                return brr;
-            
-            else if (alen != 0 && blen < 0)
-                
-                return arr;
-
-            int i;
-
-            for (i = 0; i < alen; i++)
-
+            try
             {
 
-                check[arr[i]]++; 
 
-            }
+                int alen = arr.Length;//store length of arr
 
-            for (i = 0; i < blen; i++)
+                int blen = brr.Length;//store length of brr
 
-            {
+                int[] store = new int[1000];
 
-                check[brr[i]]--;
+                int[] check = new int[1000];
 
-            }
+                //null checks
+                if (alen < 0 && blen != 0)
 
-            int j = 0;
+                    return brr;
 
-            int count = 0;
+                else if (alen != 0 && blen < 0)
 
-            for (i = 0; i < check.Length; i++)
+                    return arr;
 
-            {
+                int i;
 
-                if (check[i] != 0)
+                for (i = 0; i < alen; i++)
 
                 {
 
-                    count++; //keeps a count on the number of elements
-
-                    store[j++] = i; //value of i stored in store array
+                    check[arr[i]]++;
 
                 }
 
-            }
+                for (i = 0; i < blen; i++)
 
-            int[] key = new int[count];//initialises key array to size of count
+                {
 
- 
+                    check[brr[i]]--;
 
-            for (i = 0; i < count; i++)
+                }
+
+                int j = 0;
+
+                int count = 0;
+
+                for (i = 0; i < check.Length; i++)
+
+                {
+
+                    if (check[i] != 0)
+
+                    {
+
+                        count++;//keeps a count on the number of elements
+
+                        store[j++] = i;//value of i stored in store array
+
+                    }
+
+                }
+
+                int[] key = new int[count];//initialises key array to size of count
+
+
+
+                for (i = 0; i < count; i++)
+
+                {
+
+                    if (store[i] > 0)
+
+                        key[i] = store[i];//values in key array are update to missing values
+
+                }
+
+                return key;//return final array
+            }//end of try
+
+            catch
 
             {
 
-                if (store[i] > 0)
-                {
+                Console.WriteLine("Exception caught");
 
-                    key[i] = store[i];//values in key array are update to missing values
-                    
-                }
-                
-            }
+                int[] c = { 0, 0, 0, 0, 0 };
 
-            return key; //return final array
+                return c;
 
- 
+            } //End of catch
+
         }
+
+
+
 
 
         // Complete the gradingStudents function below.
@@ -576,54 +534,71 @@ namespace Assignment2
         static int[] gradingStudents(int[] grades)
 
         {
+            try
+            {
 
-            int n = grades.Length; //storing the length of array in n
+                int n = grades.Length;//storing the length of array in n
 
-            int[] result = new int[n]; //declaring a new array named result
+                if (n == 0)
+                    Console.WriteLine("Array is null");
 
-            for (int i = 0; i < n; i++)
+                int[] result = new int[n];//declaring a new array named result
 
-             {
-
-                if (grades[i] >= 38) //if grades are greater than or equal to 38 then there will be rounding
+                for (int i = 0; i < n; i++)
 
                 {
 
-                    if (grades[i] % 5 == 0)//if grades are a multiple of 5, then there will be no rounding
+                    if (grades[i] >= 38)//if grades are greater than or equal to 38 then there will be rounding
 
-                        result[i] = grades[i];
 
-                    else if (grades[i] % 5 == 4)//if there is a difference of 1 in nearest multiple of 5 and grade, then add 1
+                    {
 
-                        result[i] = grades[i] + 1;
+                        if (grades[i] % 5 == 0)//if grades are a multiple of 5, then there will be no rounding
 
-                    else if (grades[i] % 5 == 3)//if there is a difference of 2 in nearest multiple of 5 and grade, then add 2
+                            result[i] = grades[i];
 
-                        result[i] = grades[i] + 2;
+                        else if (grades[i] % 5 == 4)//if there is a difference of 1 in nearest multiple of 5 and grade, then add 1
+
+                            result[i] = grades[i] + 1;
+
+                        else if (grades[i] % 5 == 3)//if there is a difference of 2 in nearest multiple of 5 and grade, then add 2
+
+                            result[i] = grades[i] + 2;
+
+                        else
+
+                            result[i] = grades[i];//no change
+
+                    }//end of if
 
                     else
 
-                        result[i] = grades[i];//no change
+                    {
 
-                }//end of if
+                        result[i] = grades[i];//if grade is less than 38, no change will be reflected
 
-                else
 
-                {
+                    }//end of else
 
-                    result[i] = grades[i];//if grade is less than 38, no change will be reflected
+                }//end of for loop
 
-                }//end of else
+                return result;
+            }//End of try
+            catch
 
-            }//end of for
+            {
 
- 
+                Console.WriteLine("Exception caught");
 
-            return result;
+                int[] c = { 0, 0, 0, 0, 0 };
 
-        }//end of function
+                return c;
 
- 
+            } //End of catch
+
+        }
+
+
 
         // Complete the findMedian function below.
 
@@ -631,7 +606,7 @@ namespace Assignment2
 
         {
 
- 
+
 
             int median;                                                         //Variable to store median
 
@@ -649,7 +624,7 @@ namespace Assignment2
 
                 median = arr[med_position];
 
- 
+
 
                 return median;
 
@@ -665,13 +640,13 @@ namespace Assignment2
 
             } //End of catch
 
- 
 
- 
+
+
 
         }
 
- 
+
 
         public static void sort(int[] arr)
 
@@ -681,7 +656,7 @@ namespace Assignment2
 
             int t;                                                              //Temporary variable
 
-                                                                                // Refered https://www.geeksforgeeks.org/heap-sort/ for heap sort
+            // Refered https://www.geeksforgeeks.org/heap-sort/ for heap sort
 
             try
 
@@ -691,15 +666,15 @@ namespace Assignment2
 
                     heap_tree(arr, n, i);
 
- 
 
- 
+
+
 
                 for (int i = n - 1; i >= 0; i--)                                    //Swap the root(largest) element with the last element
 
                 {
 
- 
+
 
                     t = arr[0];
 
@@ -707,9 +682,9 @@ namespace Assignment2
 
                     arr[i] = t;
 
- 
 
- 
+
+
 
                     heap_tree(arr, i, 0);                                           //Exclude the last root variable and build the heap binary tree again
 
@@ -723,15 +698,15 @@ namespace Assignment2
 
                 Console.WriteLine("Exception caught");
 
- 
+
 
             } //End of catch
 
         }
 
- 
 
- 
+
+
 
         public static void heap_tree(int[] arr, int n, int i)                   //Method to build heap binary tree
 
@@ -753,7 +728,7 @@ namespace Assignment2
 
                     biggest_node = l;
 
- 
+
 
                 // If right child is larger than root then large is right
 
@@ -761,7 +736,7 @@ namespace Assignment2
 
                     biggest_node = r;
 
- 
+
 
                 // If largest is not root node, then swap to make it root node
 
@@ -776,6 +751,9 @@ namespace Assignment2
                     arr[biggest_node] = t;
 
 
+
+
+
                     heap_tree(arr, n, biggest_node);                                     //Repeat till a heap binary tree is obtained
 
                 }
@@ -788,13 +766,13 @@ namespace Assignment2
 
                 Console.WriteLine("Exception caught");
 
- 
+
 
             }  //End of catch
 
         }
 
- 
+
 
         // Complete the closestNumbers function below.
 
@@ -802,11 +780,79 @@ namespace Assignment2
 
         {
 
-            return new int[] { };
+            try
+
+            {
+
+
+
+                int[] res = new int[arr.Length];
+
+                List<int> list1 = new List<int>();                              //Created a list to store tht closest number points array
+
+                Array.Sort(arr);                                                //Sort the original array
+
+
+
+                int arrLen = arr.Length;
+
+
+
+                int diff = int.MaxValue;
+
+                for (int i = 1; i < arrLen; i++)                                //Finding the shortest difference between the points
+
+                    diff = Math.Abs(Math.Min(diff, arr[i] - arr[i - 1]));
+
+
+
+
+
+
+
+                for (int i = 1; i < arrLen; i++)                                //Checking if the difference between the points is shortest then adding the points to the list and returning the list
+
+                {
+
+                    if (Math.Abs(arr[i] - arr[i - 1]) == diff)
+
+                    {
+
+                        //res[k] = arr[i - 1];
+
+                        //res[k + 1] = arr[i];
+
+                        //k += 2;
+
+                        list1.Add(arr[i - 1]);
+
+                        list1.Add(arr[i]);
+
+                    }
+
+
+
+                }
+
+                return list1.ToArray();
+
+            }  //End of try
+
+            catch
+
+            {
+
+                Console.WriteLine("Exception Caught");
+
+                int[] c = { 0, 0, 0, 0, 0 };
+
+                return c;
+
+            }   //End of catch
 
         }
 
- 
+
 
         // Complete the dayOfProgrammer function below.
 
@@ -814,7 +860,7 @@ namespace Assignment2
 
         {
 
- 
+
 
             try
 
@@ -866,7 +912,7 @@ namespace Assignment2
 
                     {
 
- 
+
 
                         date = "12.09." + year;
 
@@ -900,10 +946,13 @@ namespace Assignment2
 
             } //End of catch
 
- 
-
         }
 
     }
 
 }
+
+
+
+ 
+
